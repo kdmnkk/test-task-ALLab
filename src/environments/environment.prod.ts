@@ -1,5 +1,3 @@
 export const environment = {
-  production: true,
-  baseURL: '',
-  token: ''
+  production: true
 };
