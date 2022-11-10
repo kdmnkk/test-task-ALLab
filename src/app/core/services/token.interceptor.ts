@@ -9,10 +9,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
-export class AddTokenInterceptor implements HttpInterceptor {
-
-  constructor() {
-  }
+export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = environment.token;
