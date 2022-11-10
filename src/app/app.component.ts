@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JobsStoreService } from 'src/app/core/services/jobs-store.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test-task-ALLab';
+
+  constructor(private jobsStoreService:JobsStoreService) {
+    console.log(this.jobsStoreService.jobs);
+  }
 }
