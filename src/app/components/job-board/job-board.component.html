@@ -1,0 +1,8 @@
+<div class="list">
+  <app-job-card
+    *ngFor="let job of (jobs$ | async)"
+    [job]="job"
+  ></app-job-card>
+</div>
+
+
