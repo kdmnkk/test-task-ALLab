@@ -21,7 +21,7 @@ export class JobsStoreService {
     this.jobApiService.getJobs()
       .subscribe(
         res => this._jobs.next(res),
-        err => console.log(err),
+        err => alert(err.message),
       );
   }
 }

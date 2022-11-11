@@ -12,3 +12,4 @@ export class JobBoardComponent {
 
   constructor(private storeService: JobsStoreService) {}
 }
+

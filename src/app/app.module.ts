@@ -1,5 +1,6 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
@@ -20,6 +21,7 @@ import { JobPageComponent } from 'src/app/components/job-page/job-page.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    GoogleMapsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

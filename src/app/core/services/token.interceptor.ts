@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = environment.token;
+    const token = environment.jobToken;
 
     if (token) {
       request = request.clone({
