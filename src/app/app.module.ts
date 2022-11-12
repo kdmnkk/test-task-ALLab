@@ -12,6 +12,7 @@ import { JobBoardComponent } from './components/job-board/job-board.component';
 import { JobPageComponent } from 'src/app/components/job-page/job-page.component';
 import { PropertyRectanglesComponent } from './components/property-rectangles/property-rectangles.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { LoadComponent } from './components/load/load.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     JobBoardComponent,
     JobPageComponent,
     PropertyRectanglesComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoadComponent
   ],
   imports: [
     BrowserModule,
