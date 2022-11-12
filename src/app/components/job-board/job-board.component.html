@@ -1,8 +1,9 @@
 <div class="bg-[#E6E9F2]">
   <div class="list">
     <app-job-card
-      *ngFor="let job of (jobs$ | async)"
+      *ngFor="let job of (jobs$ | async); let i = index"
       [job]="job"
+      [index]="i"
     ></app-job-card>
   </div>
 </div>
