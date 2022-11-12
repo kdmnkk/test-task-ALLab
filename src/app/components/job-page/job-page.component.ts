@@ -23,4 +23,26 @@ export class JobPageComponent implements OnInit {
       untilDestroyed(this),
     ).subscribe(res => this.job = res[0]);
   }
+
+  getDescriptionWithGaps(descr: string): {title?: string; text: string}[] {
+    return [this.getDescription(descr), this.getResponsibilities(descr), this.getBenefits(descr)]
+  }
+
+  getDescription(descr: string): {text: string} {
+    return {text: descr.split('Responsopilities:')[0]};
+  }
+
+  getResponsibilities(descr: string): {title?: string; text: string} {
+    return {
+      title: 'Responsibilities:',
+      text: descr.split('Responsopilities:')[1].split('Compensation & Benefits:')[1]
+    }
+  }
+
+  getBenefits(descr: string): {title?: string; text: string} {
+    return {
+      title: 'Compensation & Benefits:',
+      text: descr.split('Compensation & Benefits:')[1]
+    }
+  }
 }

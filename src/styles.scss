@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-  @apply max-w-[87.5rem] w-full px-6 py-8 block mx-auto;
+  @apply max-w-[87.5rem] w-full min-h-[100vh] px-6 py-8 block mx-auto;
 }
 
 .article_title {
@@ -34,4 +34,8 @@
 
 .yellow {
   @apply border-[#FFCF00]/70 bg-[#FFCF00]/20 text-[#988B49];
+}
+
+.icon-button {
+  @apply flex gap-1 items-center border-none p-2;
 }
