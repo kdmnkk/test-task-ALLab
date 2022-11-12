@@ -1,11 +1,18 @@
 <div class="bg-[#E6E9F2] w-full">
   <div class="wrapper">
-  <div class="list">
+  <div class="list mb-4 h-full" id="top">
     <app-job-card
-      *ngFor="let job of (jobs$ | async); let i = index"
+      *ngFor="let job of (jobs$ | async) | slice:startIndex:endIndex; let i = index"
       [job]="job"
       [index]="i"
     ></app-job-card>
   </div>
+
+    <a href="#top">
+      <app-pagination
+        (pageChange)="pageChanged($event)"
+        [pageCount]="getPagesNumber((jobs$ | async) || [])"
+      ></app-pagination>
+    </a>
 </div>
 </div>

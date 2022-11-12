@@ -39,3 +39,7 @@
 .icon-button {
   @apply flex gap-1 items-center border-none p-2;
 }
+
+.active-page {
+  @apply z-10 bg-indigo-50 border-indigo-500 text-indigo-600;
+}

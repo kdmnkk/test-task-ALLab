@@ -11,6 +11,7 @@ import { JobCardComponent } from './components/job-card/job-card.component';
 import { JobBoardComponent } from './components/job-board/job-board.component';
 import { JobPageComponent } from 'src/app/components/job-page/job-page.component';
 import { PropertyRectanglesComponent } from './components/property-rectangles/property-rectangles.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PropertyRectanglesComponent } from './components/property-rectangles/pr
     JobCardComponent,
     JobBoardComponent,
     JobPageComponent,
-    PropertyRectanglesComponent
+    PropertyRectanglesComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
