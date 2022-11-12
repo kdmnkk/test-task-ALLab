@@ -1,6 +1,6 @@
 <div class="wrapper">
-  <div class="flex" *ngIf="job">
-    <div class="px-12">
+  <div class="flex flex-col md:flex-row" *ngIf="job">
+    <div class="md:px-12">
       <div class="article_title">
         <div class="flex items-center justify-between">
           <h2>Job Details</h2>
@@ -22,7 +22,7 @@
         <hr>
       </div>
       <div class="content">
-        <button class="button mb-4">Apply now</button>
+        <button class="button mb-4 hidden md:block">Apply now</button>
         <div class="flex gap-8 items-start justify-between mb-2">
           <h1 class="font-bold text-xl">
             {{job.title}}
@@ -54,7 +54,7 @@
       </div>
 
       <div class="article_title"><h2>Attached images</h2><hr></div>
-      <div class="content flex gap-4 overflow-x-scroll">
+      <div class="content flex gap-4 overflow-x-auto">
         <img
           class="h-[7.2rem] rounded w-auto"
           *ngFor="let img of job.pictures"
@@ -64,8 +64,8 @@
       </div>
     </div>
     <div class="contacts">
-      <div class="article_title hidden"><h2>Contacts</h2><hr></div>
-      <div class="content flex flex-col w-[20rem] w-full">
+      <div class="article_title md:hidden"><h2>Contacts</h2><hr></div>
+      <div class="content flex flex-col md:max-w-[20rem] w-full">
         <div class="flex flex-col gap-4 bg-[#2A3047] w-full px-8 pt-8 pb-4 text-base rounded-t">
           <div class="text-white font-bold">{{job.name}}</div>
           <div class="flex font-normal gap-1 text-white">
