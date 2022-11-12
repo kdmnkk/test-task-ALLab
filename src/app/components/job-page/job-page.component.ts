@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map } from 'rxjs';
@@ -9,7 +9,7 @@ import { JobsStoreService } from 'src/app/core/services/jobs-store.service';
 @Component({
   selector: 'app-job-page',
   templateUrl: './job-page.component.html',
-  styleUrls: ['./job-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class JobPageComponent implements OnInit {
   jobID = this.router.url.slice(1);
@@ -23,5 +23,4 @@ export class JobPageComponent implements OnInit {
       untilDestroyed(this),
     ).subscribe(res => this.job = res[0]);
   }
-
 }

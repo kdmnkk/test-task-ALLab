@@ -1,15 +1,10 @@
-import { Component, Input } from '@angular/core';
-
-export interface PropertyRectanglesInterface {
-  title: string;
-  properties: string[];
-  color?: string;
-}
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { PropertyRectanglesInterface } from 'src/app/core/interfaces/property-rectangle.interface';
 
 @Component({
   selector: 'app-property-rectangles',
   templateUrl: './property-rectangles.component.html',
-  styleUrls: ['./property-rectangles.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropertyRectanglesComponent {
   @Input() item?: PropertyRectanglesInterface;
