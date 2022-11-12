@@ -1,0 +1,102 @@
+<div class="wrapper">
+  <div class="flex" *ngIf="job">
+    <div class="px-12">
+      <div class="article_title">
+        <div class="flex items-center justify-between">
+          <h2>Job Details</h2>
+          <div class="flex gap-4">
+            <button class="icon-button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path class="text-[#70778B]" stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
+              </svg>
+              <span>Save to my list</span>
+            </button>
+            <button class="icon-button">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path class="text-[#70778B]" stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+              </svg>
+              <span>Share</span>
+            </button>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="content">
+        <button class="button mb-4">Apply now</button>
+        <div class="flex gap-8 items-start justify-between mb-2">
+          <h1 class="font-bold text-xl">
+            {{job.title}}
+          </h1>
+          <div class="flex flex-col items-end justify-center ">
+            <div class="font-bold text-xl whitespace-nowrap">{{job.salary}}</div>
+            <div class="font-normal text-base whitespace-nowrap">Brutto, per year</div>
+          </div>
+        </div>
+        <div class="font-normal text-[#878D9D] text-base whitespace-nowrap mb-2">Posted {{ job.createdAt | date: 'dd/MM/yyyy'}}</div>
+        <div class="mb-8 ">
+          <div class="" *ngFor="let article of getDescriptionWithGaps(job.description)" >
+            <div *ngIf="article.title" class="font-bold mb-2">{{article.title}}</div>
+            <div class="font-normal mb-4">{{article.text}}</div>
+          </div>
+        </div>
+        <button class="button">Apply now</button>
+      </div>
+
+
+      <div class="article_title"><h2>Additional info</h2><hr></div>
+      <div class="content flex flex-col gap-4">
+        <app-property-rectangles
+          [item]="{title: 'Employment type', properties: job.employment_type, color: 'blue'}"
+        ></app-property-rectangles>
+        <app-property-rectangles
+          [item]="{title: 'Benefits', properties: job.benefits, color: 'yellow'}"
+        ></app-property-rectangles>
+      </div>
+
+      <div class="article_title"><h2>Attached images</h2><hr></div>
+      <div class="content flex gap-4 overflow-x-scroll">
+        <img
+          class="h-[7.2rem] rounded w-auto"
+          *ngFor="let img of job.pictures"
+          [src]="img"
+          alt="job-img"
+        >
+      </div>
+    </div>
+    <div class="contacts">
+      <div class="article_title hidden"><h2>Contacts</h2><hr></div>
+      <div class="content flex flex-col w-[20rem] w-full">
+        <div class="flex flex-col gap-4 bg-[#2A3047] w-full px-8 pt-8 pb-4 text-base rounded-t">
+          <div class="text-white font-bold">{{job.name}}</div>
+          <div class="flex font-normal gap-1 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+              <path class="text-white" fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+            </svg>
+            {{job.address}}
+          </div>
+          <div class="flex flex-col">
+            <a class="text-white font-normal" href="tel:{{job.phone}}">{{job.phone}}</a>
+            <a class="text-white font-normal" href="mailto:{{job.email}}">{{job.email}}</a>
+          </div>
+        </div>
+        <google-map
+          [center]="{lat: job.location.lat, lng: job.location.long}"
+          height="220"
+          width="full"
+        >
+          <map-marker [position]="{lat: job.location.lat, lng: job.location.long}"></map-marker>
+        </google-map>
+      </div>
+    </div>
+  </div>
+
+  <button
+    routerLink=""
+    class="bg-gray-400 rounded flex items-center gap-2 p-4 uppercase text-xs hover:bg-gray-300 transition-all focus:bg-gray-500"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+    </svg>
+    <span>RETURN TO JOB BOARD</span>
+  </button>
+</div>
