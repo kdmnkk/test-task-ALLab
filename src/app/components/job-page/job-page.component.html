@@ -2,7 +2,7 @@
   <div class="flex flex-col md:flex-row" *ngIf="job">
     <div class="md:px-12">
       <div class="article_title">
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between items-start">
           <h2>Job Details</h2>
           <div class="flex gap-4">
             <button class="icon-button">
@@ -23,20 +23,20 @@
       </div>
       <div class="content">
         <button class="button mb-4 hidden md:block">Apply now</button>
-        <div class="flex gap-8 items-start justify-between mb-2">
+        <div class="flex gap-2 sm:gap-8 items-start justify-between mb-2 flex-col md:flex-row">
           <h1 class="font-bold text-xl">
             {{job.title}}
           </h1>
-          <div class="flex flex-col items-end justify-center ">
-            <div class="font-bold text-xl whitespace-nowrap">{{job.salary}}</div>
-            <div class="font-normal text-base whitespace-nowrap">Brutto, per year</div>
+          <div class="flex flex-col-reverse sm:flex-col items-start sm:items-end justify-center ">
+            <div class="sm:font-bold text-base sm:text-xl whitespace-nowrap">{{job.salary}}</div>
+            <div class="font-normal text-sm sm:text-base whitespace-nowrap">Brutto, per year</div>
           </div>
         </div>
-        <div class="font-normal text-[#878D9D] text-base whitespace-nowrap mb-2">Posted {{ job.createdAt | date: 'dd/MM/yyyy'}}</div>
-        <div class="mb-8 ">
+        <div class="font-normal text-[#878D9D] text-xs sm:text-base whitespace-nowrap mb-2">Posted {{ job.createdAt | date: 'dd/MM/yyyy'}}</div>
+        <div class="mb-8">
           <div class="" *ngFor="let article of getDescriptionWithGaps(job.description)" >
-            <div *ngIf="article.title" class="font-bold mb-2">{{article.title}}</div>
-            <div class="font-normal mb-4">{{article.text}}</div>
+            <div *ngIf="article.title" class="text-sm sm:text-base font-bold mb-2">{{article.title}}</div>
+            <div class="text-sm sm:text-base font-normal mb-4">{{article.text}}</div>
           </div>
         </div>
         <button class="button">Apply now</button>
@@ -66,7 +66,7 @@
     <div class="contacts">
       <div class="article_title md:hidden"><h2>Contacts</h2><hr></div>
       <div class="content flex flex-col md:max-w-[20rem] w-full">
-        <div class="flex flex-col gap-4 bg-[#2A3047] w-full px-8 pt-8 pb-4 text-base rounded-t">
+        <div class="flex flex-col gap-4 bg-[#2A3047] w-full sm:px-8 sm:pt-8 p-4 text-xs sm:text-base rounded-t">
           <div class="text-white font-bold">{{job.name}}</div>
           <div class="flex font-normal gap-1 text-white">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -92,7 +92,7 @@
 
   <button
     routerLink=""
-    class="bg-gray-400 rounded flex items-center gap-2 p-4 uppercase text-xs hover:bg-gray-300 transition-all focus:bg-gray-500"
+    class="hidden bg-gray-400 rounded sm:flex items-center gap-2 p-4 uppercase text-xs hover:bg-gray-300 transition-all focus:bg-gray-500"
   >
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />

@@ -1,7 +1,7 @@
 <div class="" *ngIf="item">
-  <div class="text-base font-normal mb-2">{{item.title}}</div>
+  <div class="text-sm sm:text-base font-normal mb-2">{{item.title}}</div>
   <div class="flex gap-2 flex-wrap">
-    <div [class]="item.color + ' py-4 w-[11rem]  lg:w-[13.75rem] text-center rounded border border-solid text-base font-bold'" *ngFor="let property of item.properties">
+    <div [class]="item.color + ' p-2 sm:py-4 w-[8rem] sm:w-[11rem]  lg:w-[13.75rem] text-center rounded border border-solid text-sm sm:text-base sm:font-bold'" *ngFor="let property of item.properties">
       {{property}}
     </div>
   </div>
