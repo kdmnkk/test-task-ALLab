@@ -2,3 +2,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply text-[#3A4562]
+}
+
+.article_title {
+  @apply mb-10;
+
+  h2 {
+    @apply text-[#3A4562] font-bold text-2xl tracking-tight mb-2;
+  }
+}
+
+.content {
+  @apply mb-20;
+}
+
+.button {
+  @apply py-4 px-8 uppercase text-white rounded bg-[#384564] text-xs hover:bg-[#546180] transition-all focus:bg-[#293655];
+}
+
+.blue {
+  @apply border-[#55699E]/50 bg-[#A1B1DB]/50 text-[#55699E]
+}
+
+.yellow {
+  @apply border-[#FFCF00]/70 bg-[#FFCF00]/20 text-[#988B49]
+}

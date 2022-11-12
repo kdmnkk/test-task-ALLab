@@ -7,11 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: JobBoardComponent,
-    children: [
-      { path: ':id', component: JobPageComponent }
-    ]
   },
-  { path: '**', component: JobBoardComponent },
+  {
+    path: ':id',
+    component: JobPageComponent
+  }
 ]
 
 @NgModule({

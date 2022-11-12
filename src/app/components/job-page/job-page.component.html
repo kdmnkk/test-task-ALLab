@@ -1,1 +1,54 @@
-<p>jop-page works!</p>
+<div class="flex" *ngIf="job">
+  <div class="about-job">
+    <div class="article_title"><h2>Job Details</h2><hr></div>
+    <div class="content">
+      <button class="button mb-4">Apply now</button>
+      <div class="flex gap-8 items-start justify-between mb-2">
+        <div class="font-bold text-xl">
+        {{job.title}}
+        </div>
+        <div class="flex flex-col items-end justify-center ">
+          <div class="font-bold text-xl whitespace-nowrap">{{job.salary}}</div>
+          <div class="font-normal text-base whitespace-nowrap">Brutto, per year</div>
+        </div>
+      </div>
+      <div class="font-normal text-[#878D9D] text-base whitespace-nowrap mb-2">Posted {{ job.createdAt | date: 'dd/MM/yyyy'}}</div>
+      <div class="text-lg font-normal mb-8">{{job.description}}</div>
+      <button class="button">Apply now</button>
+    </div>
+
+
+    <div class="article_title"><h2>Additional info</h2><hr></div>
+    <div class="content flex flex-col gap-4">
+      <app-property-rectangles
+        [item]="{title: 'Employment type', properties: job.employment_type, color: 'blue'}"
+      ></app-property-rectangles>
+      <app-property-rectangles
+        [item]="{title: 'Benefits', properties: job.benefits, color: 'yellow'}"
+      ></app-property-rectangles>
+    </div>
+
+    <div class="article_title"><h2>Attached images</h2><hr></div>
+    <div class="content flex gap-4">
+      <img
+        class="h-[7.2rem] rounded w-auto"
+        *ngFor="let img of job.pictures"
+        [src]="img"
+        alt="job-img"
+      >
+    </div>
+  </div>
+  <div class="contacts">
+
+
+
+
+  </div>
+</div>
+
+<button class="bg-gray-400 rounded flex items-center gap-2 p-4 uppercase text-xs hover:bg-gray-300 transition-all focus:bg-gray-500">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+  </svg>
+  <span>RETURN TO JOB BOARD</span>
+</button>
