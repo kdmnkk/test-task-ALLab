@@ -1,18 +1,21 @@
 <div class="bg-[#E6E9F2] w-full">
   <div class="wrapper">
-  <div class="list mb-4 h-full" id="top">
-    <app-job-card
-      *ngFor="let job of (jobs$ | async) | slice:startIndex:endIndex; let i = index"
-      [job]="job"
-      [index]="i"
-    ></app-job-card>
-  </div>
+    <div *ngIf="(jobs$ | async)?.length && (jobs$ | async); else load" class="list mb-4 h-full">
+      <app-job-card
+        *ngFor="let job of (jobs$ | async) | slice:startIndex:endIndex; let i = index"
+        [job]="job"
+        [index]="i"
+      ></app-job-card>
+    </div>
 
-    <a href="#top">
-      <app-pagination
-        (pageChange)="pageChanged($event)"
-        [pageCount]="getPagesNumber((jobs$ | async) || [])"
-      ></app-pagination>
-    </a>
+    <app-pagination
+      (pageChange)="pageChanged($event)"
+      [pageCount]="getPagesNumber((jobs$ | async) || [])"
+    ></app-pagination>
+  </div>
 </div>
-</div>
+
+
+<ng-template #load>
+  <app-spinner></app-spinner>
+</ng-template>

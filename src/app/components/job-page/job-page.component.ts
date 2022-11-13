@@ -1,48 +1,46 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { map } from 'rxjs';
-import { JobInterface } from 'src/app/core/interfaces/job.interface';
+import { filter, map } from 'rxjs';
 import { JobsStoreService } from 'src/app/core/services/jobs-store.service';
 
-@UntilDestroy()
+export interface SectionInterface {
+  title: string | null;
+  text: string;
+}
+
+export interface SplitSectionInterface {
+  description: string;
+  textString: string;
+  titleString?: string;
+  beforeTextString?: boolean;
+}
+
 @Component({
   selector: 'app-job-page',
   templateUrl: './job-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class JobPageComponent implements OnInit {
+export class JobPageComponent {
   jobID = this.router.url.slice(1);
-  job?: JobInterface;
+  job$ = this.jobsStoreService.jobs.pipe(
+    filter(res => Boolean(res && res.length)),
+    map(list => list.find(item => item.id === this.jobID))
+  )
 
   constructor(private router: Router, private jobsStoreService: JobsStoreService) {}
 
-  ngOnInit() {
-    this.jobsStoreService.jobs.pipe(
-      map(list => list.filter(item => item.id === this.jobID)),
-      untilDestroyed(this),
-    ).subscribe(res => this.job = res[0]);
+  getSections(description: string): SectionInterface[] {
+    return [
+      this.splitSection({ description, textString: 'Responsopilities:', beforeTextString: true }),
+      this.splitSection({ description, textString: 'Responsopilities:', titleString: 'Responsibilities' }),
+      this.splitSection({ description, textString: 'Compensation & Benefits:', titleString: 'Compensation & Benefits:' }),
+    ];
   }
 
-  getDescriptionWithGaps(descr: string): {title?: string; text: string}[] {
-    return [this.getDescription(descr), this.getResponsibilities(descr), this.getBenefits(descr)]
-  }
-
-  getDescription(descr: string): {text: string} {
-    return {text: descr.split('Responsopilities:')[0]};
-  }
-
-  getResponsibilities(descr: string): {title?: string; text: string} {
+  splitSection(options: SplitSectionInterface): SectionInterface {
     return {
-      title: 'Responsibilities:',
-      text: descr.split('Responsopilities:')[1].split('Compensation & Benefits:')[1]
-    }
-  }
-
-  getBenefits(descr: string): {title?: string; text: string} {
-    return {
-      title: 'Compensation & Benefits:',
-      text: descr.split('Compensation & Benefits:')[1]
-    }
+      title: options.titleString || null,
+      text: options.description.split(options.textString)[Number(!options.beforeTextString)],
+    };
   }
 }
