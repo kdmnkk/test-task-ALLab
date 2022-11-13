@@ -1,42 +1,47 @@
 <div
   *ngIf="job"
-  class="h-[10.25rem] flex items-center justify-between bg-white rounded-xl shadow-lg mb-2 py-5 px-3 max-w-[87.5rem] w-full"
+  class="h-[10.25rem] flex items-center justify-between sm:bg-white bg-[#EFF0F5] rounded-xl shadow-lg mb-2 py-5 px-3 max-w-[87.5rem] w-full
+         flex-col-reverse md:flex-row"
 >
-  <div class="flex items-start justify-start min-w-0">
-    <div class="h-20 w-20 overflow-hidden rounded-full mr-6 shrink-0">
+  <div class="flex items-start justify-start min-w-0 w-full">
+    <div class="h-10 w-10 sm:h-20 sm:w-20 overflow-hidden rounded-full sm:mr-6 mr-2 shrink-0">
       <img src="{{job.pictures[0]}}" alt="{{job.name}}">
     </div>
     <div class="text min-w-0">
       <div
         routerLink="/{{job.id}}"
-        class="line-clamp-2 cursor-pointer text-xl font-bold mb-2 hover:underline overflow-hidden whitespace-nowrap text-ellipsis">
+        class="line-clamp-2 cursor-pointer text-base sm:text-xl sm:font-bold mb-2 hover:underline overflow-hidden whitespace-nowrap text-ellipsis">
         {{job.title }}
       </div>
-      <div class="font-normal text-[#878D9D] text-base mb-2">{{job.name}}</div>
-      <div class="font-normal text-[#878D9D] text-base flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-          <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+      <div class="font-normal text-[#878D9D] text-sm sm:text-base mb-2">{{job.name}}</div>
+      <div class="font-normal text-[#878D9D] text-sm sm:text-base flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 sm:w-5 sm:h-5">
+          <path fill-rule="evenodd"
+                d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
+                clip-rule="evenodd"/>
         </svg>
         <span class="ml-1">{{location}}</span>
       </div>
     </div>
   </div>
-  <div class="flex items-center gap-5 h-full">
-    <div class="flex items-center justify-center">
+  <div class="flex items-center gap-5 h-full max-w-[40rem] w-full md:w-auto">
+    <div class="flex items-center justify-center ml-[3rem] sm:ml-[6.4rem] md:m-0">
       <div class="text-[#38415D]" *ngFor="let i of [].constructor(5)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-          <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-        </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 sm:w-5 sm:h-5">
+            <path fill-rule="evenodd"
+                  d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                  clip-rule="evenodd"/>
+          </svg>
       </div>
 
     </div>
-    <div class="flex flex-col items-end justify-between h-full">
-      <button class="icon-button text-[#878D9D]">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z" />
-        </svg>
-      </button>
-      <div class="font-normal text-[#878D9D] text-base flex items-center whitespace-nowrap">
+    <div class="flex flex-col items-end h-full md:justify-between justify-center w-full">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+           class="w-6 h-6 text-[#878D9D] cursor-pointer md:block hidden ">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"/>
+      </svg>
+      <div class="font-normal text-[#878D9D] text-sm sm:text-base flex items-center whitespace-nowrap">
         Posted {{ job.createdAt | date: 'dd/MM/yyyy'}}
       </div>
     </div>
